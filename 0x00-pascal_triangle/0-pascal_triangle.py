@@ -2,19 +2,27 @@
 from typing import List
 
 
-def pascal_triangle(n: int) -> List[List]:
-    """ Generate Pascal's Triangle up to the nth row """
+def pascal_triangle(n: int) -> List[list]:
+    '''
+    Pascal triangle
+    '''
     if n <= 0:
         return []
 
-    triangle = [[1]]
+    if n == 1:
+        return [[1]]
 
-    for i in range(1, n):
-        row = [1]
-        for j in range(len(triangle[i - 1]) - 1):
-            sum_elements = triangle[i - 1][j] + triangle[i - 1][j + 1]
-            row.append(sum_elements)
-        row.append(1)
-        triangle.append(row)
+    if n == 2:
+        return [[1], [1, 1]]
+
+    triangle = [[1], [1, 1]]
+
+    for i in range(2, n):
+        temp = [1, 1]
+        for j in range(0, len(triangle[-1])-1):
+            a = triangle[-1][j]
+            b = triangle[-1][j+1]
+            temp.insert(-1, a + b)
+        triangle.append(temp)
 
     return triangle
