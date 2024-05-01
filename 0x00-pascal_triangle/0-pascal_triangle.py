@@ -2,10 +2,8 @@
 from typing import List
 
 
-def pascal_triangle(n: int) -> List[List[int]]:
-    """
-    Generate Pascal's Triangle up to the nth row.
-    """
+def pascal_triangle(n: int) -> List[List]:
+    """ Generate Pascal's Triangle up to the nth row """
     if n <= 0:
         return []
 
